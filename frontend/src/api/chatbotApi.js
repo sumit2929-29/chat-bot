@@ -1,14 +1,16 @@
-const mockConfig = {
-  mode: "CUSTOM_QUESTIONS", // "CUSTOM_QUESTIONS" or "AI_CHAT_ONLY"
+// Add lead capture settings to the initial config
+let mockConfig = {
+  mode: "CUSTOM_QUESTIONS", 
   assistantName: "Aura",
   theme: "dark",
-  unlockChatAfter: 1, // Number of required question clicks before free-text unlocks
+  unlockChatAfter: 1,
+  requireLeadCapture: true, // NEW: Does the bot require contact info first?
+  askEmail: true,           // NEW: Ask for email?
+  askPhone: false,          // NEW: Ask for phone?
 };
 
-const mockQuestions = [
-  { id: 'q1', text: "How does the platform pricing work?", answer: "Our SaaS tiers start at $29/mo for early stage startups." },
-  { id: 'q2', text: "Can I embed this on Webflow?", answer: "Absolutely! We provide a simple `<script>` tag that works on any website builder." },
-  { id: 'q3', text: "What AI model powers this?", answer: "We use a fine-tuned LLM optimized for business customer support." }
+let mockQuestions = [
+  { id: 'q1', text: "How does the platform pricing work?", answer: "Our SaaS tiers start at $29/mo." },
 ];
 
 export const fetchChatbotConfig = async () => {
@@ -18,6 +20,18 @@ export const fetchChatbotConfig = async () => {
 export const fetchPredefinedQuestions = async () => {
   return new Promise((res) => setTimeout(() => res(mockQuestions), 500));
 };
+
+export const saveAdminConfig = async (newConfig, newQuestions) => {
+  return new Promise((res) => {
+    setTimeout(() => {
+      mockConfig = { ...mockConfig, ...newConfig };
+      mockQuestions = [...newQuestions];
+      res({ success: true });
+    }, 500);
+  });
+};
+
+// ... keep fetchChatHistory and sendMessage below here
 
 export const fetchChatHistory = async (sessionId) => {
   return new Promise((res) => setTimeout(() => res([]), 300));
