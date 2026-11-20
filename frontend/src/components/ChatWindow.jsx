@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, Minimize2, Send, Loader2, Trash2, ArrowRight, AlertCircle } from 'lucide-react';
 import MessageList from './MessageList';
 import QuestionCards from './QuestionCards';
-import { sendMessage, fetchPredefinedQuestions } from '../api/chatbotApi';
+import { sendMessage, fetchPredefinedQuestions, startSession, fetchChatHistory } from '../api/chatbotApi';
 
 export default function ChatWindow({ onClose, config }) {
   const [messages, setMessages] = useState([
@@ -29,7 +29,7 @@ export default function ChatWindow({ onClose, config }) {
     }
   }, [config.mode]);
 
-  const handleLeadSubmit = (e) => {
+  const handleLeadSubmit = async (e) => {
     e.preventDefault();
     setLeadError(''); // Reset errors
 
@@ -52,6 +52,13 @@ export default function ChatWindow({ onClose, config }) {
       }
     }
 
+    // Initialize backend session with email and consent
+    try {
+      await startSession(leadData.email, true);
+    } catch (err) {
+      console.warn("Session initialization error:", err);
+    }
+
     // If it passes validation, unlock the chat and hide the form!
     setLeadCaptured(true);
   };
@@ -67,7 +74,7 @@ export default function ChatWindow({ onClose, config }) {
 
     if (textOverride) setQuestionsAnswered(prev => prev + 1);
 
-    const reply = await sendMessage(text, 'session-id');
+    const reply = await sendMessage(text);
     setIsTyping(false);
     setMessages(prev => [...prev, reply]);
   };

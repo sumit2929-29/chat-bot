@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Chatbot Embed Test | External Client Website Preview</title>
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text: #0F172A;
+      --muted: #64748B;
+      --primary: #254B35;
+      --primary-light: #A8C99B;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: #FFFFFF;
+      border-bottom: 1px solid #E2E8F0;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 18px;
+      color: #254B35;
+    }
+    .badge-test {
+      background: #E8F5E9;
+      color: #2E7D32;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      border: 1px solid #A8C99B;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+    }
+    .hero {
+      max-width: 1000px;
+      margin: 60px auto 40px;
+      padding: 0 24px;
+      text-align: center;
+    }
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #E5F0E1;
+      color: #254B35;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: #1E293B;
+    }
+    .hero p {
+      font-size: 17px;
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 32px;
+    }
+    .active-bot-banner {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      font-size: 13px;
+      margin-bottom: 30px;
+    }
+    .bot-id-pill {
+      font-family: monospace;
+      background: #0F172A;
+      color: #38BDF8;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .features {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+      color: #1E293B;
+    }
+    .card p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .instruction-box {
+      max-width: 750px;
+      margin: 20px auto 60px;
+      padding: 24px;
+      background: #FEF3C7;
+      border: 1px solid #FDE68A;
+      border-radius: 16px;
+      color: #92400E;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    footer {
+      margin-top: auto;
+      background: #FFFFFF;
+      border-top: 1px solid #E2E8F0;
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span>🌐 Client Company Demo Page</span>
+      <span class="badge-test">Live Widget Embed Host</span>
+    </div>
+    <div class="nav-links">
+      <a href="/dashboard/embed">← Back to Dashboard Embed</a>
+      <a href="/dashboard">Overview</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-pill">
+        ✨ Autonomous AI Support Active
+      </div>
+      <h1>Test Your Chatbot on an External Website</h1>
+      <p>
+        This simulated client page loads your exact chatbot using the 1-line script tag and tests real-time Gemini AI Q&amp;A.
+      </p>
+
+      <div class="active-bot-banner">
+        <span>Loaded Chatbot ID:</span>
+        <span class="bot-id-pill" id="display-bot-id">Loading...</span>
+        <span>Status: <strong style="color: #16A34A;">Active &amp; Ready</strong></span>
+      </div>
+
+      <div class="instruction-box">
+        👉 <strong>Look at the bottom right corner of this screen!</strong><br />
+        Click the floating circular button to launch your AI assistant. You can click suggested questions or ask anything about your website. The replies are generated directly by Gemini with your website knowledge!
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="card">
+        <h3>Shadow DOM Encapsulation</h3>
+        <p>The chatbot styles are 100% isolated. They will never collide with your client's CSS or fonts.</p>
+      </div>
+      <div class="card">
+        <h3>Zero Third-Party Latency</h3>
+        <p>Lightweight single script asynchronously loaded (~12KB) with instant launcher display.</p>
+      </div>
+      <div class="card">
+        <h3>Direct Gemini Grounding</h3>
+        <p>Answers are generated using only your crawled pages and custom FAQs, preventing hallucinations.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Simulated Client Website • Testing SupportAI Multi-Tenant Chatbot Widget
+  </footer>
+
+  <!-- DYNAMIC CHATBOT LOADER SCRIPT -->
+  <script>
+    (function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const botId = urlParams.get("bot") || "bot_demo12345678";
+      document.getElementById("display-bot-id").textContent = botId;
+
+      // Dynamically inject the 1-line widget script
+      const script = document.createElement("script");
+      script.src = "http://localhost:5000/widget.js";
+      script.setAttribute("data-chatbot-id", botId);
+      script.async = true;
+      document.body.appendChild(script);
+    })();
+  </script>
+</body>
+</html>
